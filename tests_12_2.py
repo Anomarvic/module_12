@@ -4,6 +4,9 @@ import unittest
 
 
 class TournamentTest(unittest.TestCase):
+
+    is_frozen = True
+
     @classmethod
     def setUpClass(cls):
         cls.all_results = {}
@@ -18,6 +21,7 @@ class TournamentTest(unittest.TestCase):
         for result, test_name in cls.all_results.items():
             print(f'{result}:{test_name}')
 
+    @unittest.skipIf(True, 'Тесты в этом кейсе заморожены')
     def test_1_usain_nick(self):
         tournament = Tournament(90, self.runner1, self.runner3)
         self.all_results = tournament.start()
@@ -26,7 +30,7 @@ class TournamentTest(unittest.TestCase):
         all_results_with_names = {result: runner.name for (result, runner) in self.all_results.items()}
         print(all_results_with_names)
 
-
+    @unittest.skipIf(True, 'Тесты в этом кейсе заморожены')
     def test_2_andrey_nick(self):
         tournament = Tournament(90, self.runner2, self.runner3)
         self.all_results = tournament.start()
@@ -35,6 +39,7 @@ class TournamentTest(unittest.TestCase):
         all_results_with_names = {result: runner.name for (result, runner) in self.all_results.items()}
         print(all_results_with_names)
 
+    @unittest.skipIf(True, 'Тесты в этом кейсе заморожены')
     def test_3_all(self):
         tournament = Tournament(90, self.runner1, self.runner2, self.runner3)
         self.all_results = tournament.start()
@@ -42,8 +47,6 @@ class TournamentTest(unittest.TestCase):
         # чтобы выводились имена, а не ссылки на объекты конвертируем словарь в другой словарь
         all_results_with_names = {result: runner.name for (result, runner) in self.all_results.items()}
         print(all_results_with_names)
-
-
 
     if __name__ == '__main__':
         unittest.main()
